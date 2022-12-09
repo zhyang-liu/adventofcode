@@ -1,10 +1,10 @@
-cmake_minimum_required(VERSION 3.24)
-project(1)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.24)
+PROJECT(1)
 
-set(CMAKE_CXX_STANDARD 14)
+SET(CMAKE_CXX_STANDARD 14)
 
-add_executable(1 main.cpp ../common/utils.cpp ../common/utils.h part-1.hpp part-2.hpp)
-file(COPY example DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/input)
-    file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/input DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
-endif ()
+ADD_EXECUTABLE(1 main.cpp ../common/utils.cpp ../common/utils.h part-1.hpp part-2.hpp)
+FILE(COPY example DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+IF (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/input)
+    FILE(COPY ${CMAKE_CURRENT_SOURCE_DIR}/input DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
+ENDIF ()

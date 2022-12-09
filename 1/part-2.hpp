@@ -9,14 +9,16 @@
 
 #include <deque>
 
-class Part2 : public Part1 {
+class Part2 : public Part1
+{
 protected:
     std::deque<size_t> m_top_3;
 
 public:
-    int Feed(const std::string &line) override {
+    int Feed(const std::string &line) override
+    {
         auto prev_max = m_max;
-        int r = Part1::Feed(line);
+        int  r        = Part1::Feed(line);
         if (r != 0) {
             return r;
         }
@@ -27,11 +29,12 @@ public:
         return 0;
     }
 
-    void PrintResult() const override {
+    void PrintResult() const override
+    {
         Part1::PrintResult();
 
-        size_t sum = 0;
-        for (const auto &item: m_top_3) {
+        size_t          sum = 0;
+        for (const auto &item : m_top_3) {
             sum += item;
         }
 
@@ -39,13 +42,13 @@ public:
     }
 
 protected:
-    void pushNewMax(size_t new_max) {
+    void pushNewMax(size_t new_max)
+    {
         m_top_3.push_back(new_max);
         if (m_top_3.size() > 3) {
             m_top_3.pop_front();
         }
     }
 };
-
 
 #endif //INC_2022_PART_2_HPP

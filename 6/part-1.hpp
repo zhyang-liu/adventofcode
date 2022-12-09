@@ -10,14 +10,15 @@
 #include <iostream>
 #include <deque>
 
-
-class Part1 : public LineProcessor {
+class Part1 : public LineProcessor
+{
 protected:
     static constexpr size_t package_start = 4;
-    std::deque<size_t> m_result;
+    std::deque<size_t>      m_result;
 
 public:
-    int Feed(const std::string &line) override {
+    int Feed(const std::string &line) override
+    {
         auto result = package_decoder(line);
         if (result == 0) {
             return -1;
@@ -26,17 +27,19 @@ public:
         return 0;
     }
 
-    void PrintResult() const override {
-        for (auto iter: m_result) {
+    void PrintResult() const override
+    {
+        for (auto iter : m_result) {
             std::cout << iter << std::endl;
         }
     }
 
 protected:
-    static size_t package_decoder(const std::string &line, size_t diff_decoder = package_start) {
+    static size_t package_decoder(const std::string &line, size_t diff_decoder = package_start)
+    {
         std::deque<char> dq;
-        uint8_t different_counter = 0;
-        uint8_t char_counter[26] = {0};
+        uint8_t          different_counter = 0;
+        uint8_t          char_counter[26]  = {0};
 
         for (auto i = 0; i < line.length(); ++i) {
             auto c = line[i];
@@ -65,7 +68,8 @@ protected:
     }
 
     // we need a deque with size not larger than 3
-    static int get_index(char c) {
+    static int get_index(char c)
+    {
         return c - 'a';
     }
 };

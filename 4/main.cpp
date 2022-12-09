@@ -1,8 +1,9 @@
 #include "part-1.hpp"
 
-int main() {
+int main()
+{
     FileLoader l("input");
-    Part1 d;
+    Part1      d;
 
     return l.Process(d);
 }

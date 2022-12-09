@@ -9,17 +9,19 @@
 
 #include <string>
 
-
-class Command {
+class Command
+{
 public:
-    enum class Type : size_t {
+    enum class Type : size_t
+    {
         None = 0,
-        Ls = 1,
-        Cd = 2,
+        Ls   = 1,
+        Cd   = 2,
     };
 
 public:
-    static Command ParseCommand(std::string line) {
+    static Command ParseCommand(std::string line)
+    {
         // assume always starts with "$ ".
         line = line.substr(2);
         if (HasPrefix(line, "cd ")) {
@@ -31,25 +33,31 @@ public:
         }
     }
 
-    Command::Type GetType() const {
+    Command::Type GetType() const
+    {
         return m_type;
     }
 
-    const std::string &GetSubject() const {
+    const std::string &GetSubject() const
+    {
         return m_subject;
     }
 
-    bool IsValid() const {
+    bool IsValid() const
+    {
         return m_type != Type::None;
     }
 
 protected:
-    Type m_type = Type::None;
+    Type        m_type = Type::None;
     std::string m_subject;
 
     Command() = default;
 
-    Command(Type type, std::string subject) : m_type(type), m_subject(std::move(subject)) {}
+    Command(Type type, std::string subject)
+            : m_type(type), m_subject(std::move(subject))
+    {
+    }
 };
 
 #endif //INC_2022_STRUCT_COMMAND_HPP

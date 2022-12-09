@@ -7,9 +7,13 @@
 #include <fstream>
 #include <unistd.h>
 
-FileLoader::FileLoader(std::string path) : m_path(std::move(path)) {}
+FileLoader::FileLoader(std::string path)
+        : m_path(std::move(path))
+{
+}
 
-int FileLoader::Process(LineProcessor &processor) {
+int FileLoader::Process(LineProcessor &processor)
+{
     if (m_path.empty()) {
         return 1;
     }

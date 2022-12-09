@@ -7,13 +7,14 @@
 
 #include "part-1.hpp"
 
-
-class Part2 : public Part1 {
+class Part2 : public Part1
+{
 protected:
     static constexpr size_t message_start = 14;
 
 public:
-    int Feed(const std::string &line) override {
+    int Feed(const std::string &line) override
+    {
         // use message_start to override default value of package_start.
         auto result = package_decoder(line, message_start);
         if (result == 0) {
@@ -23,6 +24,5 @@ public:
         return 0;
     }
 };
-
 
 #endif //INC_2022_PART_2_HPP

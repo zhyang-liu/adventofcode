@@ -32,6 +32,6 @@
 *.app
 
 # My own ignore files 
-**/input
+**/input*
 **/.idea
 **/cmake-*
