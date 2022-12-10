@@ -48,10 +48,12 @@ protected:
     {
         // stop if you reach an edge
         // or at the first tree that is the same height or taller than the tree under consideration
-        int u = scoreUp(spot);
-        int d = scoreDown(spot);
-        int l = scoreLeft(spot);
-        int r = scoreRight(spot);
+        char limit = m_forest[spot.first][spot.second];
+
+        int u = scoreUp(spot, limit);
+        int d = scoreDown(spot, limit);
+        int l = scoreLeft(spot, limit);
+        int r = scoreRight(spot, limit);
         int f = u * d * l * r;
 
         // printf("  (%zu,%zu) [%d] u: %d, d: %d, l: %d, r: %d, final: %d\n",
@@ -60,17 +62,14 @@ protected:
         return f;
     }
 
-    int scoreUp(const spot_t &spot) const
+    int scoreUp(const spot_t &spot, char limit) const
     {
-        char limit = m_forest[spot.first][spot.second];
-        int  score = 0;
+        int score = 0;
 
         // to up
         for (auto i = (ssize_t) spot.first - 1; i >= 0; --i) {
-            // printf("accessing (%zi, %zi)\n", i, spot.second);
-            auto h = m_forest[i][spot.second];
             ++score;
-            if (h >= limit) {
+            if (m_forest[i][spot.second] >= limit) {
                 break;
             }
         }
@@ -78,17 +77,14 @@ protected:
         return score;
     }
 
-    int scoreDown(const spot_t &spot) const
+    int scoreDown(const spot_t &spot, char limit) const
     {
-        char limit = m_forest[spot.first][spot.second];
-        int  score = 0;
+        int score = 0;
 
         // to down
         for (auto i = (ssize_t) spot.first + 1; i < m_forest.size(); ++i) {
-            // printf("accessing (%zi, %zi)\n", i, spot.second);
-            auto h = m_forest[i][spot.second];
             ++score;
-            if (h >= limit) {
+            if (m_forest[i][spot.second] >= limit) {
                 break;
             }
         }
@@ -96,17 +92,14 @@ protected:
         return score;
     }
 
-    int scoreLeft(const spot_t &spot) const
+    int scoreLeft(const spot_t &spot, char limit) const
     {
-        char limit = m_forest[spot.first][spot.second];
-        int  score = 0;
+        int score = 0;
 
         // to left
         for (auto i = (ssize_t) spot.second - 1; i >= 0; --i) {
-            // printf("accessing (%zi, %zi)\n", spot.first, i);
-            auto h = m_forest[spot.first][i];
             ++score;
-            if (h >= limit) {
+            if (m_forest[spot.first][i] >= limit) {
                 break;
             }
         }
@@ -114,17 +107,14 @@ protected:
         return score;
     }
 
-    int scoreRight(const spot_t &spot) const
+    int scoreRight(const spot_t &spot, char limit) const
     {
-        char limit = m_forest[spot.first][spot.second];
-        int  score = 0;
+        int score = 0;
 
         // to right
         for (auto i = (ssize_t) spot.second + 1; i < m_forest.size(); ++i) {
-            // printf("accessing (%zi, %zi)\n", spot.first, i);
-            auto h = m_forest[spot.first][i];
             ++score;
-            if (h >= limit) {
+            if (m_forest[spot.first][i] >= limit) {
                 break;
             }
         }
