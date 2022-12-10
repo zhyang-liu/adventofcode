@@ -54,6 +54,7 @@ protected:
         // 2-4,6-8
         char       *end = nullptr;
         const char *h   = line.c_str();
+
         a->first = strtoul(h, &end, 10);
         if (*end != '-') {
             return 1;

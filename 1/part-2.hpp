@@ -33,7 +33,8 @@ public:
     {
         Part1::PrintResult();
 
-        size_t          sum = 0;
+        size_t sum = 0;
+
         for (const auto &item : m_top_3) {
             sum += item;
         }

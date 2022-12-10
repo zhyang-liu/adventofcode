@@ -92,7 +92,8 @@ public:
 protected:
     void printStack() const
     {
-        size_t          n = 1;
+        size_t n = 1;
+
         for (const auto &iter : m_stacks) {
             if (iter.empty()) {
                 continue;

@@ -97,6 +97,7 @@ protected:
         // clean up
         col_second_highest.clear();
         col_second_highest.resize(m_highest_by_col.size(), -1);
+
         // start iteration
         // printf("down to top\n");
         for (auto row_iter = m_forest.rbegin(); row_iter != m_forest.rend(); ++row_iter) {

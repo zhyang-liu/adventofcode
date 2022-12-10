@@ -21,7 +21,9 @@ public:
 
         // let's take a walk to find a directory
         // which is the smallest one among those who are larger than required_size
-        size_t current_minimum = ~0; // set to maximum
+
+        size_t current_minimum = ~0; // initial with maximum
+
         m_root->Walk([&](const Node *node)
                      {
                          if (!node->IsDir()) {

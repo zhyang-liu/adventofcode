@@ -48,6 +48,7 @@ public:
     {
         constexpr size_t threshold = 100000;
         size_t           sum       = 0;
+
         m_root->Walk([&](const Node *node)
                      {
                          if (node->IsDir()) {
@@ -75,7 +76,8 @@ protected:
     {
         switch (command.GetType()) {
             case Command::Type::Cd: {
-                m_state    = state_e::cd;
+                m_state = state_e::cd;
+
                 if (command.GetSubject() == "/") {
                     m_current_dir = m_root;
                     return 0;
@@ -108,8 +110,10 @@ protected:
             m_current_dir->AddChild(Node::NewDir(TrimSpaces(line.substr(4))));
             return 0;
         }
+
         size_t bytes_read = 0;
         auto   file_size  = ParseInt64(line, &bytes_read);
+
         m_current_dir->AddChild(Node::NewFile(TrimSpaces(line.substr(bytes_read)), file_size));
         return 0;
     }

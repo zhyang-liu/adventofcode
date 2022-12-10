@@ -30,8 +30,9 @@ public:
 protected:
     static size_t findDuplicate(const std::string &line)
     {
-        bool        checker_map[53] = {false}; // skip first char due to priority starts with 1
-        for (size_t i               = 0; i < line.length() / 2; ++i) {
+        bool checker_map[53] = {false}; // skip first char due to priority starts with 1
+
+        for (size_t i = 0; i < line.length() / 2; ++i) {
             checker_map[getPriority(line[i])] = 1;
         }
 
@@ -40,6 +41,7 @@ protected:
                 return getPriority(line[i]);
             }
         }
+        return 0;
     }
 
     static size_t getPriority(char c)

@@ -24,6 +24,7 @@ public:
     {
         // assume always starts with "$ ".
         line = line.substr(2);
+
         if (HasPrefix(line, "cd ")) {
             return {Type::Cd, TrimSpaces(line.substr(3))};
         } else if (HasPrefix(line, "ls")) {

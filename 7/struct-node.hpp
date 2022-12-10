@@ -41,7 +41,8 @@ public:
             return m_size;
         }
 
-        size_t          size_sum = 0;
+        size_t size_sum = 0;
+        
         for (const auto &iter : m_children) {
             size_sum += iter.second->GetSize();
         }
