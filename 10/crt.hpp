@@ -38,8 +38,9 @@ public:
 
     void PrintBuffer() const
     {
+        std::string line_buffer(40, '.');
+
         for (int i = 0; i < 6; ++i) {
-            std::string line_buffer(40, '.');
             strncpy((char *) line_buffer.data(), m_screen_buffer[i], 40);
             printf("%s\n", line_buffer.c_str());
         }
